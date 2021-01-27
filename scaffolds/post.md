@@ -1,5 +1,8 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags:
+updated: {{ date }}
+categories: 技术
+tags: 
+ - Python
 ---
