@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Rosen&#39;s Blog</title>
+  
+  <subtitle>人生得意须尽欢，莫使金樽空对月。</subtitle>
+  <link href="http://blog.wrz8.com/atom.xml" rel="self"/>
+  
+  <link href="http://blog.wrz8.com/"/>
+  <updated>2021-01-27T07:12:19.949Z</updated>
+  <id>http://blog.wrz8.com/</id>
+  
+  <author>
+    <name>Rosen</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo Hello World</title>
+    <link href="http://blog.wrz8.com/hello-world/"/>
+    <id>http://blog.wrz8.com/hello-world/</id>
+    <published>2021-01-27T07:12:19.949Z</published>
+    <updated>2021-01-27T07:12:19.949Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+    <category term="Hexo" scheme="http://blog.wrz8.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>应用开发笔记</title>
+    <link href="http://blog.wrz8.com/Application-Development-Notes/"/>
+    <id>http://blog.wrz8.com/Application-Development-Notes/</id>
+    <published>2021-01-27T01:48:00.000Z</published>
+    <updated>2021-01-27T05:45:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="应用开发"><a href="#应用开发" class="headerlink" title="应用开发"></a>应用开发</h3><ul><li>展示类的东西都应该有排序字段</li><li>支持筛选的字段一定是固定的</li><li>对于功能逻辑不了解<ul><li>先搭界面，再做功能分析，细化功能，完善界面，再进行开发</li></ul></li><li>对于自己的项目，先做逻辑功能分析，搭建初步页面，细化功能，完成开发</li><li>对于有交互的地方，在交互功能完成之后，一定要有一定的反馈</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;应用开发&quot;&gt;&lt;a href=&quot;#应用开发&quot; class=&quot;headerlink&quot; title=&quot;应用开发&quot;&gt;&lt;/a&gt;应用开发&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;展示类的东西都应该有排序字段&lt;/li&gt;
+&lt;li&gt;支持筛选的字段一定是固定的&lt;/li&gt;
+&lt;li&gt;对于功能逻辑不了解</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    
+    
+    <category term="Application Development" scheme="http://blog.wrz8.com/tags/Application-Development/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Warning: Prop &#39;href&#39; did not match</title>
+    <link href="http://blog.wrz8.com/Warning-Prop-href-did-not-match/"/>
+    <id>http://blog.wrz8.com/Warning-Prop-href-did-not-match/</id>
+    <published>2021-01-26T11:11:00.000Z</published>
+    <updated>2021-01-27T05:45:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Warning-Prop-‘href’-did-not-match"><a href="#Warning-Prop-‘href’-did-not-match" class="headerlink" title="Warning: Prop ‘href’ did not match."></a>Warning: Prop ‘href’ did not match.</h3><h4 id="from"><a href="#from" class="headerlink" title="from"></a>from</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">&quot;link.html&quot;</span>&gt;&lt;/Link&gt;</span><br></pre></td></tr></table></figure><h4 id="to"><a href="#to" class="headerlink" title="to"></a>to</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">&quot;/link.html&quot;</span> <span class="keyword">as</span>=<span class="string">&quot;/link.html&quot;</span>&gt;&lt;/Link&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Warning-Prop-‘href’-did-not-match&quot;&gt;&lt;a href=&quot;#Warning-Prop-‘href’-did-not-match&quot; class=&quot;headerlink&quot; title=&quot;Warning: Prop ‘href’ did n</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    
+    
+    <category term="Nextjs" scheme="http://blog.wrz8.com/tags/Nextjs/"/>
+    
+    <category term="React" scheme="http://blog.wrz8.com/tags/React/"/>
+    
+    <category term="Bug" scheme="http://blog.wrz8.com/tags/Bug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 踩坑</title>
+    <link href="http://blog.wrz8.com/python-bug-summary/"/>
+    <id>http://blog.wrz8.com/python-bug-summary/</id>
+    <published>2020-01-01T00:00:00.000Z</published>
+    <updated>2021-01-27T07:12:19.949Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>变量赋值，不要在后面加逗号</li></ol><ul><li>会对其元组化</li></ul><ol start="2"><li>async await async</li><li>await async await</li></ol><h3 id="测试的重要性"><a href="#测试的重要性" class="headerlink" title="测试的重要性"></a>测试的重要性</h3><ul><li>只有写好测试，才能保证此错误不会被复现</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;变量赋值，不要在后面加逗号&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;会对其元组化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;async await async&lt;/li&gt;
+&lt;li&gt;await async await&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 </summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    
+    
+    <category term="Python" scheme="http://blog.wrz8.com/tags/Python/"/>
+    
+  </entry>
+  
+</feed>
