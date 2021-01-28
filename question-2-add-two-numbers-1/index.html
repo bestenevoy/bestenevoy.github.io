@@ -4,16 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>Rosen&#39;s Blog</title>
+  <title>question 2. add two numbers | Rosen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这里是 Rosen 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹水，偶尔也会写点正经文字。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rosen&#39;s Blog">
-<meta property="og:url" content="http://blog.wrz8.com/index.html">
+  <meta name="description" content="题目描述add two numbers 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。 请你将两个数相加，并以相同形式返回一个表示和的链表。 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。 123456789101112例1:输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]输出：[7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="question 2. add two numbers">
+<meta property="og:url" content="http://blog.wrz8.com/question-2-add-two-numbers-1/index.html">
 <meta property="og:site_name" content="Rosen&#39;s Blog">
-<meta property="og:description" content="这里是 Rosen 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹水，偶尔也会写点正经文字。">
+<meta property="og:description" content="题目描述add two numbers 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。 请你将两个数相加，并以相同形式返回一个表示和的链表。 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。 123456789101112例1:输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]输出：[7">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-01-27T11:29:19.000Z">
+<meta property="article:modified_time" content="2021-01-27T11:29:19.000Z">
 <meta property="article:author" content="Rosen">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Rosen's Blog" type="application/atom+xml">
@@ -79,58 +83,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-01-28T00:56:58.356Z" itemprop="datePublished">2021-01-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hello-world/">Hexo Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/hello-world/" data-id="ckkg5ds8u00062hqmewej406k" data-title="Hexo Hello World" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-question-2-add-two-numbers-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-question-2-add-two-numbers-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/question-2-add-two-numbers-1/" class="article-date">
   <time class="dt-published" datetime="2021-01-27T11:29:19.000Z" itemprop="datePublished">2021-01-27</time>
@@ -147,8 +100,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/question-2-add-two-numbers-1/">question 2. add two numbers</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      question 2. add two numbers
     </h1>
   
 
@@ -182,167 +135,28 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Application-Development-Notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Application-Development-Notes/" class="article-date">
-  <time class="dt-published" datetime="2021-01-27T01:48:00.000Z" itemprop="datePublished">2021-01-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Application-Development-Notes/">应用开发笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="应用开发"><a href="#应用开发" class="headerlink" title="应用开发"></a>应用开发</h3><ul>
-<li>展示类的东西都应该有排序字段</li>
-<li>支持筛选的字段一定是固定的</li>
-<li>对于功能逻辑不了解<ul>
-<li>先搭界面，再做功能分析，细化功能，完善界面，再进行开发</li>
-</ul>
-</li>
-<li>对于自己的项目，先做逻辑功能分析，搭建初步页面，细化功能，完成开发</li>
-<li>对于有交互的地方，在交互功能完成之后，一定要有一定的反馈</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/Application-Development-Notes/" data-id="ckkg5ds8j00012hqmhtlhgi8a" data-title="应用开发笔记" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Application-Development/" rel="tag">Application Development</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Warning-Prop-href-did-not-match" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Warning-Prop-href-did-not-match/" class="article-date">
-  <time class="dt-published" datetime="2021-01-26T11:11:00.000Z" itemprop="datePublished">2021-01-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          Hexo Hello World
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Warning-Prop-href-did-not-match/">Warning: Prop &#39;href&#39; did not match</a>
-    </h1>
   
+    <a href="/Application-Development-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">应用开发笔记</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Warning-Prop-‘href’-did-not-match"><a href="#Warning-Prop-‘href’-did-not-match" class="headerlink" title="Warning: Prop ‘href’ did not match."></a>Warning: Prop ‘href’ did not match.</h3><h4 id="from"><a href="#from" class="headerlink" title="from"></a>from</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">&quot;link.html&quot;</span>&gt;&lt;/Link&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="to"><a href="#to" class="headerlink" title="to"></a>to</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">&quot;/link.html&quot;</span> <span class="keyword">as</span>=<span class="string">&quot;/link.html&quot;</span>&gt;&lt;/Link&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/Warning-Prop-href-did-not-match/" data-id="ckkg5ds8r00032hqm2f66c0o0" data-title="Warning: Prop &#39;href&#39; did not match" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-python-bug-summary" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/python-bug-summary/" class="article-date">
-  <time class="dt-published" datetime="2020-01-01T00:00:00.000Z" itemprop="datePublished">2020-01-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/python-bug-summary/">Python 踩坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>变量赋值，不要在后面加逗号</li>
-</ol>
-<ul>
-<li>会对其元组化</li>
-</ul>
-<ol start="2">
-<li>async await async</li>
-<li>await async await</li>
-</ol>
-<h3 id="测试的重要性"><a href="#测试的重要性" class="headerlink" title="测试的重要性"></a>测试的重要性</h3><ul>
-<li>只有写好测试，才能保证此错误不会被复现</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/python-bug-summary/" data-id="ckkg5ds8v00072hqm7fx8c8o5" data-title="Python 踩坑" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
