@@ -4,14 +4,21 @@
   <url>
     <loc>http://blog.wrz8.com/hello-world/</loc>
     
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/python-bug-summary/</loc>
     
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</loc>
+    
+    <lastmod>2021-01-31</lastmod>
     
   </url>
   
@@ -53,7 +60,7 @@
 
   <url>
     <loc>http://blog.wrz8.com/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,49 +68,49 @@
   
   <url>
     <loc>http://blog.wrz8.com/tags/Application-Development/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Nextjs/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/React/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Bug/</loc>
-    <lastmod>2021-01-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.wrz8.com/tags/Hexo/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Python/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.wrz8.com/tags/Hexo/</loc>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Leetcode/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -112,7 +119,7 @@
   
   <url>
     <loc>http://blog.wrz8.com/categories/tech/</loc>
-    <lastmod>2021-01-28</lastmod>
+    <lastmod>2021-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
