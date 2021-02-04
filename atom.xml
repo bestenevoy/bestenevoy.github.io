@@ -6,7 +6,7 @@
   <link href="http://blog.wrz8.com/atom.xml" rel="self"/>
   
   <link href="http://blog.wrz8.com/"/>
-  <updated>2021-02-01T02:56:54.000Z</updated>
+  <updated>2021-02-04T01:48:23.000Z</updated>
   <id>http://blog.wrz8.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法</title>
+    <link href="http://blog.wrz8.com/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://blog.wrz8.com/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2021-02-04T01:48:23.000Z</published>
+    <updated>2021-02-04T01:48:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这两天服务器环境升级了php到7.1.*，然后使用phpcms V9添加或编辑文章时都会遇到500错误。<br><br>查看error_log文件，看到一堆<code>Illegal string offset ‘**’ | phpcms/libs/classes/segment.class.php | 345</code>这样的错误。<br><br>查看 segment.class.php 文件的345行，附近的代码是：</p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  function get_keyword($str,$ilen=-1) &#123;</span><br><span class="line">    if($str==&#x27;&#x27;) return &#x27;&#x27;;</span><br><span class="line">    else $this-&gt;split_result($str,true,true);</span><br><span class="line">    $okstr = $this-&gt;result_string;</span><br><span class="line">    $ws = explode(&#x27; &#x27;,$okstr);</span><br><span class="line">    $okstr = $wks = &#x27;&#x27;;</span><br><span class="line">    foreach($ws as $w) &#123;</span><br><span class="line">      $w = trim($w);</span><br><span class="line">      if(strlen($w)&lt;2) continue;</span><br><span class="line">      if(!preg_match(&quot;/[^0-9:-]/&quot;,$w)) continue;</span><br><span class="line">  if(strlen($w)==2&amp;&amp;ord($w[0])&gt;0x80) continue;</span><br><span class="line"><span class="addition">+  if($wks==&#x27;&#x27;) $wks=array();</span></span><br><span class="line">  if(isset($wks[$w])) $wks[$w]++;</span><br><span class="line">      else $wks[$w] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br></pre></td></tr></table></figure><p>看来问题出在<code>$wks</code>这个变量上（字符串变量直接当数组使用）。查看前面的代码，<code>$wks</code>的赋值是：<code>$okstr = $wks = &#39;&#39;;</code> ，后来通过搜索得知：PHP7开始，对于数据类型的隐式转换做了调整，String无法隐式转换成Array了。</p><p>所以，问题就出在<code>$wks</code>一开始是字符串，后面的代码又直接把他当数组用，再新版PHP中就会出错。所以解决方法应该是在344行前面增加一行：<code>if($wks==&quot;&quot;) $wks=array()</code>;</p><p>经过测试，此方法有效。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这两天服务器环境升级了php到7.1.*，然后使用phpcms V9添加或编辑文章时都会遇到500错误。&lt;br&gt;&lt;br&gt;查看error_log文件，看到一堆&lt;code&gt;Illegal string offset ‘**’ | phpcms/libs/classes/segm</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    
+    
+    <category term="PHP" scheme="http://blog.wrz8.com/tags/PHP/"/>
+    
+  </entry>
   
   <entry>
     <title>alembic 使用记录</title>
@@ -134,7 +158,7 @@
     <link href="http://blog.wrz8.com/hello-world/"/>
     <id>http://blog.wrz8.com/hello-world/</id>
     <published>2020-01-01T00:00:00.000Z</published>
-    <updated>2021-02-01T03:00:35.899Z</updated>
+    <updated>2021-02-04T01:53:04.905Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
@@ -156,7 +180,7 @@
     <link href="http://blog.wrz8.com/python-bug-summary/"/>
     <id>http://blog.wrz8.com/python-bug-summary/</id>
     <published>2020-01-01T00:00:00.000Z</published>
-    <updated>2021-02-01T03:00:35.899Z</updated>
+    <updated>2021-02-04T01:53:04.905Z</updated>
     
     <content type="html"><![CDATA[<ol><li>变量赋值，不要在后面加逗号</li></ol><ul><li>会对其元组化</li></ul><ol start="2"><li>async await async</li><li>await async await</li></ol><h3 id="测试的重要性"><a href="#测试的重要性" class="headerlink" title="测试的重要性"></a>测试的重要性</h3><ul><li>只有写好测试，才能保证此错误不会被复现</li></ul>]]></content>
     

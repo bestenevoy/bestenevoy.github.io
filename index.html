@@ -81,6 +81,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php7下-phpcms-v9-编辑文章出现-segment-class-php-345-错误解决方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2021-02-04T01:48:23.000Z" itemprop="datePublished">2021-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这两天服务器环境升级了php到7.1.*，然后使用phpcms V9添加或编辑文章时都会遇到500错误。<br><br>查看error_log文件，看到一堆<code>Illegal string offset ‘**’ | phpcms/libs/classes/segment.class.php | 345</code>这样的错误。<br><br>查看 segment.class.php 文件的345行，附近的代码是：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  function get_keyword($str,$ilen=-1) &#123;</span><br><span class="line">    if($str==&#x27;&#x27;) return &#x27;&#x27;;</span><br><span class="line">    else $this-&gt;split_result($str,true,true);</span><br><span class="line">    $okstr = $this-&gt;result_string;</span><br><span class="line">    $ws = explode(&#x27; &#x27;,$okstr);</span><br><span class="line">    $okstr = $wks = &#x27;&#x27;;</span><br><span class="line">    foreach($ws as $w) &#123;</span><br><span class="line">      $w = trim($w);</span><br><span class="line">      if(strlen($w)&lt;2) continue;</span><br><span class="line">      if(!preg_match(&quot;/[^0-9:-]/&quot;,$w)) continue;</span><br><span class="line">	  if(strlen($w)==2&amp;&amp;ord($w[0])&gt;0x80) continue;</span><br><span class="line"><span class="addition">+	  if($wks==&#x27;&#x27;) $wks=array();</span></span><br><span class="line">	  if(isset($wks[$w])) $wks[$w]++;</span><br><span class="line">      else $wks[$w] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br></pre></td></tr></table></figure>
+<p>看来问题出在<code>$wks</code>这个变量上（字符串变量直接当数组使用）。查看前面的代码，<code>$wks</code>的赋值是：<code>$okstr = $wks = &#39;&#39;;</code> ，后来通过搜索得知：PHP7开始，对于数据类型的隐式转换做了调整，String无法隐式转换成Array了。</p>
+<p>所以，问题就出在<code>$wks</code>一开始是字符串，后面的代码又直接把他当数组用，再新版PHP中就会出错。所以解决方法应该是在344行前面增加一行：<code>if($wks==&quot;&quot;) $wks=array()</code>;</p>
+<p>经过测试，此方法有效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.wrz8.com/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="ckkq7gw6o0008zst73gou27by" data-title="php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-alembic-使用记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="article-date">
@@ -129,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" data-id="ckklzk5qy000619mt6hxo4xwq" data-title="alembic 使用记录" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" data-id="ckkq7gw6m0006zst74dnbfuqv" data-title="alembic 使用记录" class="article-share-link">Teilen</a>
       
       
       
@@ -185,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/question-2-add-two-numbers-1/" data-id="ckklzk5r2000c19mt7jx0f6ex" data-title="question 2. add two numbers" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/question-2-add-two-numbers-1/" data-id="ckkq7gw6r000dzst7ddqtavz6" data-title="question 2. add two numbers" class="article-share-link">Teilen</a>
       
       
       
@@ -239,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/Application-Development-Notes/" data-id="ckklzk5qr000119mtbx4yhfi1" data-title="应用开发笔记" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/Application-Development-Notes/" data-id="ckkq7gw6f0001zst7hpie7zb2" data-title="应用开发笔记" class="article-share-link">Teilen</a>
       
       
       
@@ -284,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/Warning-Prop-href-did-not-match/" data-id="ckklzk5qu000319mtbaa0cout" data-title="Warning: Prop &#39;href&#39; did not match" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/Warning-Prop-href-did-not-match/" data-id="ckkq7gw6i0003zst74gzr7toc" data-title="Warning: Prop &#39;href&#39; did not match" class="article-share-link">Teilen</a>
       
       
       
@@ -333,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/hello-world/" data-id="ckklzk5qz000719mt7q3i6d48" data-title="Hexo Hello World" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/hello-world/" data-id="ckkq7gw6n0007zst7htqjdej6" data-title="Hexo Hello World" class="article-share-link">Teilen</a>
       
       
       
@@ -390,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/python-bug-summary/" data-id="ckklzk5r0000819mt6kizfsoh" data-title="Python 踩坑" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/python-bug-summary/" data-id="ckkq7gw6q000czst7906e82d0" data-title="Python 踩坑" class="article-share-link">Teilen</a>
       
       
       
@@ -424,7 +473,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Application-Development/" rel="tag">Application Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLAlchemy/" rel="tag">SQLAlchemy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alembic/" rel="tag">alembic</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Application-Development/" rel="tag">Application Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLAlchemy/" rel="tag">SQLAlchemy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alembic/" rel="tag">alembic</a></li></ul>
     </div>
   </div>
 
@@ -434,7 +483,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Application-Development/" style="font-size: 10px;">Application Development</a> <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/FastApi/" style="font-size: 10px;">FastApi</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Nextjs/" style="font-size: 10px;">Nextjs</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/SQLAlchemy/" style="font-size: 10px;">SQLAlchemy</a> <a href="/tags/alembic/" style="font-size: 10px;">alembic</a>
+      <a href="/tags/Application-Development/" style="font-size: 10px;">Application Development</a> <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/FastApi/" style="font-size: 10px;">FastApi</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Nextjs/" style="font-size: 10px;">Nextjs</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/SQLAlchemy/" style="font-size: 10px;">SQLAlchemy</a> <a href="/tags/alembic/" style="font-size: 10px;">alembic</a>
     </div>
   </div>
 
@@ -443,7 +492,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
     </div>
   </div>
 
@@ -454,6 +503,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法</a>
+          </li>
         
           <li>
             <a href="/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">alembic 使用记录</a>
@@ -469,10 +522,6 @@
         
           <li>
             <a href="/Warning-Prop-href-did-not-match/">Warning: Prop &#39;href&#39; did not match</a>
-          </li>
-        
-          <li>
-            <a href="/hello-world/">Hexo Hello World</a>
           </li>
         
       </ul>
