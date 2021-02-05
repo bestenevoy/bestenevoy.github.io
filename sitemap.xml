@@ -4,14 +4,14 @@
   <url>
     <loc>http://blog.wrz8.com/hello-world/</loc>
     
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/python-bug-summary/</loc>
     
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     
   </url>
   
@@ -19,6 +19,13 @@
     <loc>http://blog.wrz8.com/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2021-02-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wrz8.com/DDIA-chapter-1-section-1/</loc>
+    
+    <lastmod>2021-02-03</lastmod>
     
   </url>
   
@@ -67,7 +74,7 @@
 
   <url>
     <loc>http://blog.wrz8.com/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -75,77 +82,84 @@
   
   <url>
     <loc>http://blog.wrz8.com/tags/Application-Development/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.wrz8.com/tags/DDIA/</loc>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Nextjs/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/React/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Bug/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Python/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/FastApi/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/alembic/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/SQLAlchemy/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Hexo/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/PHP/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.wrz8.com/tags/Leetcode/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -154,7 +168,14 @@
   
   <url>
     <loc>http://blog.wrz8.com/categories/tech/</loc>
-    <lastmod>2021-02-04</lastmod>
+    <lastmod>2021-02-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.wrz8.com/categories/%E8%AF%BB%E4%B9%A6/</loc>
+    <lastmod>2021-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

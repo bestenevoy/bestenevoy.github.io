@@ -41,6 +41,35 @@
   </entry>
   
   <entry>
+    <title>DDIA-chapter-1-section-1</title>
+    <link href="http://blog.wrz8.com/DDIA-chapter-1-section-1/"/>
+    <id>http://blog.wrz8.com/DDIA-chapter-1-section-1/</id>
+    <published>2021-02-03T01:30:49.000Z</published>
+    <updated>2021-02-03T01:30:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><ul><li><p>overwhelming</p></li><li><p>processor</p></li><li><p>batch</p></li><li><p>broker</p></li><li><p>buzzwords</p></li><li><p>Comprehensive</p></li><li><p>landscape</p></li><li><p>pros and cons</p></li><li><p>informed</p></li><li><p>fault tolerance</p></li><li><p>Trade-offs</p></li><li><p>distributed</p></li><li><p>distributed systems upon which modern databases are built</p></li><li><p>peek</p></li><li><p>entrench</p></li><li><p>undermine</p></li><li><p> <em>protect vested interests</em> 保护既得的利益</p></li><li><p>avert disasters</p></li><li><p>Downtime</p></li><li><p>tease 梳理</p></li><li><p>from scratch</p></li><li><p>intuition 直觉</p></li><li><p>track down</p></li><li><p>hood 盖子</p></li><li><p>sensor</p></li><li><p>some kind of  某种</p></li><li><p>relevant 相关的, 有意义的</p></li><li><p>bonus 奖金, 额外的</p></li><li><p>robust</p></li><li><p>breaks down 分解, 故障</p></li><li><p>inflexible</p></li><li><p>premature optimization 过早的/未成熟的优化</p></li><li><p>publication</p></li><li><p>deployment n.部署, 调集</p></li><li><p>superficial</p></li><li><p>realm  领域</p></li><li><p>fall within 应列入…范围内</p></li><li><p>ambiguous</p></li><li><p>bias toward</p></li><li><p>Open platforms also reduce the risk of vendor lock-in.</p></li><li><p>proprietary</p></li><li><p>underpin</p></li><li><p>we compare several different data models and query languages</p></li><li><p>over time</p></li><li><p>the pacific ocean</p></li><li><p>as opposed 而不是</p></li><li><p>typically 通常</p></li><li><p>crunch 咬碎</p></li><li><p>painfully 非常(强调不好性质或者情形)</p></li><li><p>all the time 时时刻刻</p></li><li><p>approach 接近靠近, n. 方法手段</p></li><li><p>and so on 诸如此类, 等等.</p></li><li><pre><code>Message Integrity</code></pre></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;单词&quot;&gt;&lt;a href=&quot;#单词&quot; class=&quot;headerlink&quot; title=&quot;单词&quot;&gt;&lt;/a&gt;单词&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;overwhelming&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;processor&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;batc</summary>
+      
+    
+    
+    
+    <category term="读书" scheme="http://blog.wrz8.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+    <category term="DDIA" scheme="http://blog.wrz8.com/tags/DDIA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>alembic 使用记录</title>
     <link href="http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
     <id>http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</id>
@@ -158,7 +187,7 @@
     <link href="http://blog.wrz8.com/hello-world/"/>
     <id>http://blog.wrz8.com/hello-world/</id>
     <published>2020-01-01T00:00:00.000Z</published>
-    <updated>2021-02-04T01:53:04.905Z</updated>
+    <updated>2021-02-05T07:26:33.185Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
@@ -180,7 +209,7 @@
     <link href="http://blog.wrz8.com/python-bug-summary/"/>
     <id>http://blog.wrz8.com/python-bug-summary/</id>
     <published>2020-01-01T00:00:00.000Z</published>
-    <updated>2021-02-04T01:53:04.905Z</updated>
+    <updated>2021-02-05T07:26:33.185Z</updated>
     
     <content type="html"><![CDATA[<ol><li>变量赋值，不要在后面加逗号</li></ol><ul><li>会对其元组化</li></ul><ol start="2"><li>async await async</li><li>await async await</li></ol><h3 id="测试的重要性"><a href="#测试的重要性" class="headerlink" title="测试的重要性"></a>测试的重要性</h3><ul><li>只有写好测试，才能保证此错误不会被复现</li></ul>]]></content>
     
