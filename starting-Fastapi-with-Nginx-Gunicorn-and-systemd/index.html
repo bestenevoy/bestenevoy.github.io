@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>starting Fastapi with Nginx Gunicorn and systemd | Rosen&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="使用 Nginx Gunicorn systemd 启动 fastapi 项目配置 systemd 服务需要新建以下两个文件,文件内容根据提示和需要自行配置 12&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.socket&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.service &#x2F;etc&#x2F;sy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="starting Fastapi with Nginx Gunicorn and systemd">
+<meta property="og:url" content="http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/index.html">
+<meta property="og:site_name" content="Rosen&#39;s Blog">
+<meta property="og:description" content="使用 Nginx Gunicorn systemd 启动 fastapi 项目配置 systemd 服务需要新建以下两个文件,文件内容根据提示和需要自行配置 12&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.socket&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.service &#x2F;etc&#x2F;sy">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-16T00:46:48.000Z">
+<meta property="article:modified_time" content="2021-04-16T00:46:48.000Z">
+<meta property="article:author" content="Rosen">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="FastApi">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="systemd">
+<meta property="article:tag" content="Gunicorn">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Rosen's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rosen&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">人生得意须尽欢，莫使金樽空对月。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" target="_blank" rel="noopener" href="https://wrz8.com">Main</a>
+        
+          <a class="main-nav-link" target="_blank" rel="noopener" href="https://github.com/bestenevoy">Github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.wrz8.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-starting-Fastapi-with-Nginx-Gunicorn-and-systemd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T00:46:48.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      starting Fastapi with Nginx Gunicorn and systemd
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="使用-Nginx-Gunicorn-systemd-启动-fastapi-项目"><a href="#使用-Nginx-Gunicorn-systemd-启动-fastapi-项目" class="headerlink" title="使用 Nginx Gunicorn systemd 启动 fastapi 项目"></a>使用 Nginx Gunicorn systemd 启动 fastapi 项目</h1><h2 id="配置-systemd-服务"><a href="#配置-systemd-服务" class="headerlink" title="配置 systemd 服务"></a>配置 systemd 服务</h2><p>需要新建以下两个文件,文件内容根据提示和需要自行配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.socket</span><br><span class="line">&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.service</span><br></pre></td></tr></table></figure>
+<p><strong>/etc/systemd/system/gunicorn.socket:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gunicorn socket</span><br><span class="line"></span><br><span class="line">[Socket]</span><br><span class="line"><span class="comment"># ListenStream 写要生成的 sock 文件路径，要写完整路径。我是放到项目根目录下的。</span></span><br><span class="line">ListenStream=/run/gunicorn.sock</span><br><span class="line"><span class="comment"># Our service won&#x27;t need permissions for the socket, since it</span></span><br><span class="line"><span class="comment"># inherits the file descriptor by socket activation</span></span><br><span class="line"><span class="comment"># only the nginx daemon will need access to the socket</span></span><br><span class="line">User=www-data</span><br><span class="line"><span class="comment"># Optionally restrict the socket permissions even more.</span></span><br><span class="line"><span class="comment"># Mode=600</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=sockets.target</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>note: </p>
+<ul>
+<li>www-data 是 nginx 进程的拥有者</li>
+<li>可以使用 ps aux | grep nginx | grep worker 查看</li>
+</ul>
+</blockquote>
+<p><strong>/etc/systemd/system/gunicorn.service:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gunicorn daemon</span><br><span class="line">Requires=gunicorn.socket</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="comment"># the specific user that our service will run as</span></span><br><span class="line">User=someuser</span><br><span class="line">Group=someuser</span><br><span class="line"><span class="comment"># another option for an even more restricted service is</span></span><br><span class="line"><span class="comment"># DynamicUser=yes</span></span><br><span class="line"><span class="comment"># see http://0pointer.net/blog/dynamic-users-with-systemd.html</span></span><br><span class="line">RuntimeDirectory=gunicorn</span><br><span class="line"></span><br><span class="line"><span class="comment"># WorkingDirectory 是项目路径目录</span></span><br><span class="line">WorkingDirectory=/home/someuser/project</span><br><span class="line"><span class="comment"># 代替手动执行的命令，</span></span><br><span class="line"><span class="comment"># 原本在虚拟环境中要执行的 gunicorn -c gconfig.py main:app -k uvicorn.workers.UvicornWorker</span></span><br><span class="line"><span class="comment"># where gunicorn 查看路径</span></span><br><span class="line"><span class="comment"># 其中 gunicorn 和 gconfig.py 要写完整的路径名称</span></span><br><span class="line">ExecStart=/home/someuser/.pyenv/shims/gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">KillMode=mixed</span><br><span class="line">TimeoutStopSec=5</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<h3 id="Nginx-配置文件新增内容"><a href="#Nginx-配置文件新增内容" class="headerlink" title="Nginx 配置文件新增内容"></a>Nginx 配置文件新增内容</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>          <span class="number">8000</span>;</span><br><span class="line">        <span class="attribute">server_name</span>     <span class="number">127.0.0.1</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://unix:/run/gunicorn.sock;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><h3 id="启动gunicorn-socket"><a href="#启动gunicorn-socket" class="headerlink" title="启动gunicorn socket"></a>启动<code>gunicorn socket</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable gunicorn.socket --now</span><br><span class="line">sudo systemctl start gunicorn.service</span><br></pre></td></tr></table></figure>
+<h3 id="重启-nginx"><a href="#重启-nginx" class="headerlink" title="重启 nginx"></a>重启 <code>nginx</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable gunicorn.socket --now</span><br><span class="line">sudo systemctl stop gunicorn.service</span><br></pre></td></tr></table></figure>
+<h3 id="权限不足"><a href="#权限不足" class="headerlink" title="权限不足"></a>权限不足</h3><blockquote>
+<p>note:</p>
+<ul>
+<li>项目无法启动, 先查看错误日志</li>
+<li>文件或目录不存在,则是因为<br><code>gunicorn.sock</code> 文件找不到</li>
+<li> <code>ListenStream=/run/gunicorn.sock</code>  和 <code>User=www-data</code> 配置错误,可能会导致 <code>nginx</code> 提示权限不足</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/" data-id="cknjnti9h000q0orq3aux1lwj" data-title="starting Fastapi with Nginx Gunicorn and systemd" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gunicorn/" rel="tag">Gunicorn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/systemd/" rel="tag">systemd</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/English-word-memory/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">English word memory</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Application-Development/" rel="tag">Application Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDIA/" rel="tag">DDIA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/" rel="tag">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gunicorn/" rel="tag">Gunicorn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLAlchemy/" rel="tag">SQLAlchemy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alembic/" rel="tag">alembic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemd/" rel="tag">systemd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%AE%B0/" rel="tag">杂记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Application-Development/" style="font-size: 10px;">Application Development</a> <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DDIA/" style="font-size: 10px;">DDIA</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/FastApi/" style="font-size: 15px;">FastApi</a> <a href="/tags/Gunicorn/" style="font-size: 10px;">Gunicorn</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Nextjs/" style="font-size: 10px;">Nextjs</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/SQLAlchemy/" style="font-size: 10px;">SQLAlchemy</a> <a href="/tags/alembic/" style="font-size: 10px;">alembic</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/%E6%9D%82%E8%AE%B0/" style="font-size: 10px;">杂记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/">starting Fastapi with Nginx Gunicorn and systemd</a>
+          </li>
+        
+          <li>
+            <a href="/English-word-memory/">English word memory</a>
+          </li>
+        
+          <li>
+            <a href="/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">css学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/">怎么锻炼语言组织能力</a>
+          </li>
+        
+          <li>
+            <a href="/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        Rosen
+      
+      &copy; 2021 Rosen<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a target="_blank" rel="noopener" href="https://wrz8.com" class="mobile-nav-link">Main</a>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/bestenevoy" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

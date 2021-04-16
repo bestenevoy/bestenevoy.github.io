@@ -81,6 +81,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-starting-Fastapi-with-Nginx-Gunicorn-and-systemd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T00:46:48.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/">starting Fastapi with Nginx Gunicorn and systemd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="使用-Nginx-Gunicorn-systemd-启动-fastapi-项目"><a href="#使用-Nginx-Gunicorn-systemd-启动-fastapi-项目" class="headerlink" title="使用 Nginx Gunicorn systemd 启动 fastapi 项目"></a>使用 Nginx Gunicorn systemd 启动 fastapi 项目</h1><h2 id="配置-systemd-服务"><a href="#配置-systemd-服务" class="headerlink" title="配置 systemd 服务"></a>配置 systemd 服务</h2><p>需要新建以下两个文件,文件内容根据提示和需要自行配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.socket</span><br><span class="line">&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.service</span><br></pre></td></tr></table></figure>
+<p><strong>/etc/systemd/system/gunicorn.socket:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gunicorn socket</span><br><span class="line"></span><br><span class="line">[Socket]</span><br><span class="line"><span class="comment"># ListenStream 写要生成的 sock 文件路径，要写完整路径。我是放到项目根目录下的。</span></span><br><span class="line">ListenStream=/run/gunicorn.sock</span><br><span class="line"><span class="comment"># Our service won&#x27;t need permissions for the socket, since it</span></span><br><span class="line"><span class="comment"># inherits the file descriptor by socket activation</span></span><br><span class="line"><span class="comment"># only the nginx daemon will need access to the socket</span></span><br><span class="line">User=www-data</span><br><span class="line"><span class="comment"># Optionally restrict the socket permissions even more.</span></span><br><span class="line"><span class="comment"># Mode=600</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=sockets.target</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>note: </p>
+<ul>
+<li>www-data 是 nginx 进程的拥有者</li>
+<li>可以使用 ps aux | grep nginx | grep worker 查看</li>
+</ul>
+</blockquote>
+<p><strong>/etc/systemd/system/gunicorn.service:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gunicorn daemon</span><br><span class="line">Requires=gunicorn.socket</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="comment"># the specific user that our service will run as</span></span><br><span class="line">User=someuser</span><br><span class="line">Group=someuser</span><br><span class="line"><span class="comment"># another option for an even more restricted service is</span></span><br><span class="line"><span class="comment"># DynamicUser=yes</span></span><br><span class="line"><span class="comment"># see http://0pointer.net/blog/dynamic-users-with-systemd.html</span></span><br><span class="line">RuntimeDirectory=gunicorn</span><br><span class="line"></span><br><span class="line"><span class="comment"># WorkingDirectory 是项目路径目录</span></span><br><span class="line">WorkingDirectory=/home/someuser/project</span><br><span class="line"><span class="comment"># 代替手动执行的命令，</span></span><br><span class="line"><span class="comment"># 原本在虚拟环境中要执行的 gunicorn -c gconfig.py main:app -k uvicorn.workers.UvicornWorker</span></span><br><span class="line"><span class="comment"># where gunicorn 查看路径</span></span><br><span class="line"><span class="comment"># 其中 gunicorn 和 gconfig.py 要写完整的路径名称</span></span><br><span class="line">ExecStart=/home/someuser/.pyenv/shims/gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">KillMode=mixed</span><br><span class="line">TimeoutStopSec=5</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<h3 id="Nginx-配置文件新增内容"><a href="#Nginx-配置文件新增内容" class="headerlink" title="Nginx 配置文件新增内容"></a>Nginx 配置文件新增内容</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>          <span class="number">8000</span>;</span><br><span class="line">        <span class="attribute">server_name</span>     <span class="number">127.0.0.1</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://unix:/run/gunicorn.sock;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><h3 id="启动gunicorn-socket"><a href="#启动gunicorn-socket" class="headerlink" title="启动gunicorn socket"></a>启动<code>gunicorn socket</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable gunicorn.socket --now</span><br><span class="line">sudo systemctl start gunicorn.service</span><br></pre></td></tr></table></figure>
+<h3 id="重启-nginx"><a href="#重启-nginx" class="headerlink" title="重启 nginx"></a>重启 <code>nginx</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable gunicorn.socket --now</span><br><span class="line">sudo systemctl stop gunicorn.service</span><br></pre></td></tr></table></figure>
+<h3 id="权限不足"><a href="#权限不足" class="headerlink" title="权限不足"></a>权限不足</h3><blockquote>
+<p>note:</p>
+<ul>
+<li>项目无法启动, 先查看错误日志</li>
+<li>文件或目录不存在,则是因为<br><code>gunicorn.sock</code> 文件找不到</li>
+<li> <code>ListenStream=/run/gunicorn.sock</code>  和 <code>User=www-data</code> 配置错误,可能会导致 <code>nginx</code> 提示权限不足</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/" data-id="cknjnti9h000q0orq3aux1lwj" data-title="starting Fastapi with Nginx Gunicorn and systemd" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gunicorn/" rel="tag">Gunicorn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/systemd/" rel="tag">systemd</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-English-word-memory" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/English-word-memory/" class="article-date">
@@ -155,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/English-word-memory/" data-id="ckmd7kohf00061gr73t920rxn" data-title="English word memory" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/English-word-memory/" data-id="cknjnti9600060orqgp8283do" data-title="English word memory" class="article-share-link">Teilen</a>
       
       
       
@@ -214,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckmd7kohj000c1gr7h71p1jrc" data-title="css学习笔记" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cknjnti9a000c0orqh2d8hgr7" data-title="css学习笔记" class="article-share-link">Teilen</a>
       
       
       
@@ -283,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/" data-id="ckmd7kohq000q1gr71cp03bwf" data-title="怎么锻炼语言组织能力" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/" data-id="cknjnti9j000t0orq27zw5360" data-title="怎么锻炼语言组织能力" class="article-share-link">Teilen</a>
       
       
       
@@ -332,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="ckmd7kohm000h1gr7ctdt9bgq" data-title="php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="cknjnti9d000h0orqcw29d3as" data-title="php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法" class="article-share-link">Teilen</a>
       
       
       
@@ -484,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/DDIA-chapter-1-section-1/" data-id="ckmd7koha00031gr7csjl273z" data-title="DDIA-chapter-1-section-1" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/DDIA-chapter-1-section-1/" data-id="cknjnti9300030orqhm34dchd" data-title="DDIA-chapter-1-section-1" class="article-share-link">Teilen</a>
       
       
       
@@ -546,7 +615,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" data-id="ckmd7kohi00081gr75ivhfvt6" data-title="alembic 使用记录" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" data-id="cknjnti9800080orqfpqw1r8r" data-title="alembic 使用记录" class="article-share-link">Teilen</a>
       
       
       
@@ -602,7 +671,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/question-2-add-two-numbers-1/" data-id="ckmd7kohp000n1gr7fj7c6062" data-title="question 2. add two numbers" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/question-2-add-two-numbers-1/" data-id="cknjnti9g000n0orq1tb2c1kf" data-title="question 2. add two numbers" class="article-share-link">Teilen</a>
       
       
       
@@ -656,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/Application-Development-Notes/" data-id="ckmd7koh400011gr70zcz4jjn" data-title="应用开发笔记" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/Application-Development-Notes/" data-id="cknjnti8z00010orq7104e9qv" data-title="应用开发笔记" class="article-share-link">Teilen</a>
       
       
       
@@ -701,60 +770,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/Warning-Prop-href-did-not-match/" data-id="ckmd7kohg00071gr78epu9dnm" data-title="Warning: Prop &#39;href&#39; did not match" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/Warning-Prop-href-did-not-match/" data-id="cknjnti9700070orq00tt8nnx" data-title="Warning: Prop &#39;href&#39; did not match" class="article-share-link">Teilen</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2020-01-01T00:00:00.000Z" itemprop="datePublished">2020-01-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hello-world/">Hexo Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/hello-world/" data-id="ckmd7kohk000d1gr7dl73dvd5" data-title="Hexo Hello World" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -789,7 +809,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Application-Development/" rel="tag">Application Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDIA/" rel="tag">DDIA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/" rel="tag">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLAlchemy/" rel="tag">SQLAlchemy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alembic/" rel="tag">alembic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%AE%B0/" rel="tag">杂记</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Application-Development/" rel="tag">Application Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bug/" rel="tag">Bug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDIA/" rel="tag">DDIA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/" rel="tag">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastApi/" rel="tag">FastApi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gunicorn/" rel="tag">Gunicorn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nextjs/" rel="tag">Nextjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLAlchemy/" rel="tag">SQLAlchemy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alembic/" rel="tag">alembic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemd/" rel="tag">systemd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%AE%B0/" rel="tag">杂记</a></li></ul>
     </div>
   </div>
 
@@ -799,7 +819,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Application-Development/" style="font-size: 10px;">Application Development</a> <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DDIA/" style="font-size: 10px;">DDIA</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/FastApi/" style="font-size: 10px;">FastApi</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Nextjs/" style="font-size: 10px;">Nextjs</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/SQLAlchemy/" style="font-size: 10px;">SQLAlchemy</a> <a href="/tags/alembic/" style="font-size: 10px;">alembic</a> <a href="/tags/%E6%9D%82%E8%AE%B0/" style="font-size: 10px;">杂记</a>
+      <a href="/tags/Application-Development/" style="font-size: 10px;">Application Development</a> <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DDIA/" style="font-size: 10px;">DDIA</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/FastApi/" style="font-size: 15px;">FastApi</a> <a href="/tags/Gunicorn/" style="font-size: 10px;">Gunicorn</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Nextjs/" style="font-size: 10px;">Nextjs</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/SQLAlchemy/" style="font-size: 10px;">SQLAlchemy</a> <a href="/tags/alembic/" style="font-size: 10px;">alembic</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/%E6%9D%82%E8%AE%B0/" style="font-size: 10px;">杂记</a>
     </div>
   </div>
 
@@ -808,7 +828,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
     </div>
   </div>
 
@@ -819,6 +839,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/">starting Fastapi with Nginx Gunicorn and systemd</a>
+          </li>
         
           <li>
             <a href="/English-word-memory/">English word memory</a>
@@ -834,10 +858,6 @@
         
           <li>
             <a href="/php7%E4%B8%8B-phpcms-v9-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0%E5%87%BA%E7%8E%B0-segment-class-php-345-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法</a>
-          </li>
-        
-          <li>
-            <a href="/DDIA-chapter-1-section-1/">DDIA-chapter-1-section-1</a>
           </li>
         
       </ul>
