@@ -129,14 +129,14 @@
 <h2 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h2><h3 id="4-1-停止服务"><a href="#4-1-停止服务" class="headerlink" title="4.1 停止服务"></a>4.1 停止服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable gunicorn.socket --now</span><br><span class="line">sudo systemctl stop gunicorn.service</span><br></pre></td></tr></table></figure>
 <h3 id="4-2-问题"><a href="#4-2-问题" class="headerlink" title="4.2 问题"></a>4.2 问题</h3><ul>
 <li>项目无法启动, 先查看错误日志</li>
-<li>文件或目录不存在,则是因为<br><code>gunicorn.sock</code> 文件找不到</li>
+<li>文件或目录不存在,则是因为 <code>gunicorn.sock</code> 文件找不到</li>
 <li> <code>ListenStream=/run/gunicorn.sock</code>  和 <code>User=www-data</code> 配置错误,可能会导致 <code>nginx</code> 提示权限不足</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/" data-id="cknjo0e8a000t10osh1027zh5" data-title="starting Fastapi with Nginx Gunicorn and systemd" class="article-share-link">Teilen</a>
+      <a data-url="http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/" data-id="cknjo6qps000qzvutgwli50g6" data-title="starting Fastapi with Nginx Gunicorn and systemd" class="article-share-link">Teilen</a>
       
       
       
