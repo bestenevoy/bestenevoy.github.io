@@ -117,6 +117,5 @@ sudo systemctl stop gunicorn.service
 ### 4.2 问题
 
 - 项目无法启动, 先查看错误日志
-- 文件或目录不存在,则是因为 
-  `gunicorn.sock` 文件找不到
+- 文件或目录不存在,则是因为 `gunicorn.sock` 文件找不到
 -  `ListenStream=/run/gunicorn.sock`  和 `User=www-data` 配置错误,可能会导致 `nginx` 提示权限不足
