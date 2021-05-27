@@ -1,5 +1,5 @@
 ---
-title: php7下 phpcms v9 编辑文章出现 segment.class.php|345 错误解决方法
+title: phpcms v9 segment.class.php|345 错误解决方法
 categories: 技术
 tags:
   - PHP
