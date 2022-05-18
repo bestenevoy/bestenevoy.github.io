@@ -6,14 +6,14 @@
 title: Rosen's Blog
 subtitle: '人生得意须尽欢，莫使金樽空对月。'
 description: '这里是 Rosen 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹水，偶尔也会写点正经文字。'
-keywords:
+keywords: Blog, Life
 author: Rosen
 language: zh-Hans
 timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://blog.wrz8.com
+url: http://blog.16000000.xyz
 root: /
 # permalink: :year/:month/:day/:title/
 permalink: :title/
@@ -130,7 +130,7 @@ theme_config:
   keywords: "wrz, rosen, blog, 博客, 独立博客"
   favicon: /images/favicon.ico
   menu:
-    Main: https://wrz8.com
+    # Main: https://wrz8.com
     Github: https://github.com/bestenevoy
   copyright: Rosen
 # Deployment
