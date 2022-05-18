@@ -3,11 +3,11 @@
   <title>Rosen&#39;s Blog</title>
   
   <subtitle>人生得意须尽欢，莫使金樽空对月。</subtitle>
-  <link href="http://blog.wrz8.com/atom.xml" rel="self"/>
+  <link href="http://blog.16000000.xyz/atom.xml" rel="self"/>
   
-  <link href="http://blog.wrz8.com/"/>
-  <updated>2021-05-13T04:40:26.000Z</updated>
-  <id>http://blog.wrz8.com/</id>
+  <link href="http://blog.16000000.xyz/"/>
+  <updated>2022-05-18T18:13:25.000Z</updated>
+  <id>http://blog.16000000.xyz/</id>
   
   <author>
     <name>Rosen</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>git commit style</title>
-    <link href="http://blog.wrz8.com/git-commit-style/"/>
-    <id>http://blog.wrz8.com/git-commit-style/</id>
+    <link href="http://blog.16000000.xyz/git-commit-style/"/>
+    <id>http://blog.16000000.xyz/git-commit-style/</id>
     <published>2021-05-13T04:40:26.000Z</published>
-    <updated>2021-05-13T04:40:26.000Z</updated>
+    <updated>2022-05-18T18:13:25.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Commit-Message-格式"><a href="#Commit-Message-格式" class="headerlink" title="Commit Message 格式"></a>Commit Message 格式</h2><p>目前规范使用较多的是 Angular 团队的规范, 继而衍生了 Conventional Commits specification. 很多工具也是基于此规范, 它的 message 格式如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure><p>复制代码我们通过 git commit 命令带出的 vim 界面填写的最终结果应该类似如上这个结构, 大致分为三个部分(使用空行分割):</p><ul><li>标题行: 必填, 描述主要修改类型和内容</li><li>主题内容: 描述为什么修改, 做了什么样的修改, 以及开发的思路等等</li><li>页脚注释: 放 Breaking Changes 或 Closed Issues</li></ul><p>分别由如下部分构成:</p><ul><li>type: commit 的类型</li><li>feat: 新特性</li><li>fix: 修改问题</li><li>refactor: 代码重构</li><li>docs: 文档修改</li><li>style: 代码格式修改, 注意不是 css 修改</li><li>test: 测试用例修改</li><li>chore: 其他修改, 比如构建流程, 依赖管理.</li><li>scope: commit 影响的范围, 比如: route, component, utils, build…</li><li>subject: commit 的概述, 建议符合  50/72 formatting</li><li>body: commit 具体修改内容, 可以分为多行, 建议符合 50/72 formatting</li><li>footer: 一些备注, 通常是 BREAKING CHANGE 或修复的 bug 的链接.</li></ul><p>这样一个符合规范的 commit message, 就好像是一份邮件.</p><h2 id="git-commit-模板"><a href="#git-commit-模板" class="headerlink" title="git commit 模板"></a>git commit 模板</h2><p>如果你只是个人的项目, 或者想尝试一下这样的规范格式, 那么你可以为 git 设置 commit template, 每次 git commit 的时候在 vim 中带出, 时刻提醒自己:</p><p>修改 ~/.gitconfig, 添加:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[commit]</span><br><span class="line">template &#x3D; ~&#x2F;.gitmessage</span><br></pre></td></tr></table></figure><p>复制代码新建 ~/.gitmessage 内容可以如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># head: &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line"># - type: feat, fix, docs, style, refactor, test, chore</span><br><span class="line"># - scope: can be empty (eg. if the change is a global or difficult to assign to a single component)</span><br><span class="line"># - subject: start with verb (such as &#39;change&#39;), 50-character line</span><br><span class="line">#</span><br><span class="line"># body: 72-character wrapped. This should answer:</span><br><span class="line"># * Why was this change necessary?</span><br><span class="line"># * How does it address the problem?</span><br><span class="line"># * Are there any side effects?</span><br><span class="line">#</span><br><span class="line"># footer: </span><br><span class="line"># - Include a link to the ticket, if any.</span><br><span class="line"># - BREAKING CHANGE</span><br><span class="line">#</span><br></pre></td></tr></table></figure><p><a href="https://juejin.cn/post/6844903606815064077">Original</a></p>]]></content>
     
@@ -33,19 +33,19 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Git" scheme="http://blog.wrz8.com/tags/Git/"/>
+    <category term="Git" scheme="http://blog.16000000.xyz/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>starting Fastapi with Nginx Gunicorn and systemd</title>
-    <link href="http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/"/>
-    <id>http://blog.wrz8.com/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/</id>
+    <link href="http://blog.16000000.xyz/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/"/>
+    <id>http://blog.16000000.xyz/starting-Fastapi-with-Nginx-Gunicorn-and-systemd/</id>
     <published>2021-04-16T00:46:48.000Z</published>
-    <updated>2021-04-16T00:46:48.000Z</updated>
+    <updated>2022-05-18T18:13:25.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="使用-Nginx-Gunicorn-systemd-启动-fastapi-项目"><a href="#使用-Nginx-Gunicorn-systemd-启动-fastapi-项目" class="headerlink" title="使用 Nginx Gunicorn systemd 启动 fastapi 项目"></a>使用 Nginx Gunicorn systemd 启动 fastapi 项目</h1><h2 id="1-配置-systemd-服务"><a href="#1-配置-systemd-服务" class="headerlink" title="1.配置 systemd 服务"></a>1.配置 systemd 服务</h2><p>需要新建以下两个文件,文件内容根据提示和需要自行配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.socket</span><br><span class="line">&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;gunicorn.service</span><br></pre></td></tr></table></figure><p><strong>/etc/systemd/system/gunicorn.socket:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gunicorn socket</span><br><span class="line"></span><br><span class="line">[Socket]</span><br><span class="line"><span class="comment"># ListenStream 写要生成的 sock 文件路径，要写完整路径。我是放到项目根目录下的。</span></span><br><span class="line">ListenStream=/run/gunicorn.sock</span><br><span class="line"><span class="comment"># Our service won&#x27;t need permissions for the socket, since it</span></span><br><span class="line"><span class="comment"># inherits the file descriptor by socket activation</span></span><br><span class="line"><span class="comment"># only the nginx daemon will need access to the socket</span></span><br><span class="line">User=www-data</span><br><span class="line"><span class="comment"># Optionally restrict the socket permissions even more.</span></span><br><span class="line"><span class="comment"># Mode=600</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=sockets.target</span><br></pre></td></tr></table></figure><p><strong>note:</strong></p><ul><li>www-data 是 nginx 进程的拥有者</li><li>可以使用 ps aux | grep nginx | grep worker 查看</li></ul><p><strong>/etc/systemd/system/gunicorn.service:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gunicorn daemon</span><br><span class="line">Requires=gunicorn.socket</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="comment"># the specific user that our service will run as</span></span><br><span class="line">User=someuser</span><br><span class="line">Group=someuser</span><br><span class="line"><span class="comment"># another option for an even more restricted service is</span></span><br><span class="line"><span class="comment"># DynamicUser=yes</span></span><br><span class="line"><span class="comment"># see http://0pointer.net/blog/dynamic-users-with-systemd.html</span></span><br><span class="line">RuntimeDirectory=gunicorn</span><br><span class="line"></span><br><span class="line"><span class="comment"># WorkingDirectory 是项目路径目录</span></span><br><span class="line">WorkingDirectory=/home/someuser/project</span><br><span class="line"><span class="comment"># 代替手动执行的命令，</span></span><br><span class="line"><span class="comment"># 原本在虚拟环境中要执行的 gunicorn -c gconfig.py main:app -k uvicorn.workers.UvicornWorker</span></span><br><span class="line"><span class="comment"># where gunicorn 查看路径</span></span><br><span class="line"><span class="comment"># 其中 gunicorn 和 gconfig.py 要写完整的路径名称</span></span><br><span class="line">ExecStart=/home/someuser/.pyenv/shims/gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">KillMode=mixed</span><br><span class="line">TimeoutStopSec=5</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure><h3 id="2-Nginx-配置文件新增内容"><a href="#2-Nginx-配置文件新增内容" class="headerlink" title="2.Nginx 配置文件新增内容"></a>2.Nginx 配置文件新增内容</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>          <span class="number">8000</span>;</span><br><span class="line">        <span class="attribute">server_name</span>     <span class="number">127.0.0.1</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://unix:/run/gunicorn.sock;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-启动服务"><a href="#3-启动服务" class="headerlink" title="3.启动服务"></a>3.启动服务</h2><h3 id="3-1-启动gunicorn-socket"><a href="#3-1-启动gunicorn-socket" class="headerlink" title="3.1 启动gunicorn socket"></a>3.1 启动<code>gunicorn socket</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable gunicorn.socket --now</span><br><span class="line">sudo systemctl start gunicorn.service</span><br></pre></td></tr></table></figure><h3 id="3-2-重启-nginx"><a href="#3-2-重启-nginx" class="headerlink" title="3.2 重启 nginx"></a>3.2 重启 <code>nginx</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure><h2 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h2><h3 id="4-1-停止服务"><a href="#4-1-停止服务" class="headerlink" title="4.1 停止服务"></a>4.1 停止服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable gunicorn.socket --now</span><br><span class="line">sudo systemctl stop gunicorn.service</span><br></pre></td></tr></table></figure><h3 id="4-2-问题"><a href="#4-2-问题" class="headerlink" title="4.2 问题"></a>4.2 问题</h3><ul><li>项目无法启动, 先查看错误日志</li><li>文件或目录不存在,则是因为 <code>gunicorn.sock</code> 文件找不到</li><li> <code>ListenStream=/run/gunicorn.sock</code>  和 <code>User=www-data</code> 配置错误,可能会导致 <code>nginx</code> 提示权限不足</li></ul>]]></content>
     
@@ -57,27 +57,27 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Python" scheme="http://blog.wrz8.com/tags/Python/"/>
+    <category term="Python" scheme="http://blog.16000000.xyz/tags/Python/"/>
     
-    <category term="FastApi" scheme="http://blog.wrz8.com/tags/FastApi/"/>
+    <category term="FastApi" scheme="http://blog.16000000.xyz/tags/FastApi/"/>
     
-    <category term="Nginx" scheme="http://blog.wrz8.com/tags/Nginx/"/>
+    <category term="Nginx" scheme="http://blog.16000000.xyz/tags/Nginx/"/>
     
-    <category term="systemd" scheme="http://blog.wrz8.com/tags/systemd/"/>
+    <category term="systemd" scheme="http://blog.16000000.xyz/tags/systemd/"/>
     
-    <category term="Gunicorn" scheme="http://blog.wrz8.com/tags/Gunicorn/"/>
+    <category term="Gunicorn" scheme="http://blog.16000000.xyz/tags/Gunicorn/"/>
     
   </entry>
   
   <entry>
     <title>English word memory</title>
-    <link href="http://blog.wrz8.com/English-word-memory/"/>
-    <id>http://blog.wrz8.com/English-word-memory/</id>
+    <link href="http://blog.16000000.xyz/English-word-memory/"/>
+    <id>http://blog.16000000.xyz/English-word-memory/</id>
     <published>2021-03-17T01:04:23.000Z</published>
-    <updated>2021-03-17T01:04:23.000Z</updated>
+    <updated>2022-05-18T18:12:22.000Z</updated>
     
     <content type="html"><![CDATA[<ol><li>词根词缀背单词</li><li>费曼学习法<ol><li>理解概念concept<ul><li>讲之前，要先理顺自己的逻辑</li></ul></li><li>讲授 teach<ul><li>看着笔记</li><li>以自己能接受的逻辑讲给别人听/录音</li></ul></li><li>回顾 review<ul><li><ol><li>不可避免的卡壳，忘记重要的点，不能解释，或者不能将重要的概念联系起来</li></ol></li><li><ol start="2"><li>回到第一步，重新厘清概念，整理逻辑</li></ol></li></ul></li><li>讲授 teach</li><li>简化、内化 simplify<ol><li>越讲越数练，越讲越清晰，越讲速度越快，越讲越爱讲</li><li>看到单词，脑海中形成画面</li></ol></li></ol></li><li>费曼频率<ol><li>初期约频繁越好 &gt;= 2次</li><li>初期极费力</li><li>积累一定量根缀后会省时省力-滚雪球理论</li></ol></li><li>艾宾浩斯遗忘曲线<ol><li>意志力强</li><li>基础好</li><li>坚持</li></ol></li></ol>]]></content>
     
@@ -98,19 +98,19 @@
     
     
     
-    <category term="学习" scheme="http://blog.wrz8.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="http://blog.16000000.xyz/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="English" scheme="http://blog.wrz8.com/tags/English/"/>
+    <category term="English" scheme="http://blog.16000000.xyz/tags/English/"/>
     
   </entry>
   
   <entry>
     <title>CSS Study Note</title>
-    <link href="http://blog.wrz8.com/css-study-note/"/>
-    <id>http://blog.wrz8.com/css-study-note/</id>
+    <link href="http://blog.16000000.xyz/css-study-note/"/>
+    <id>http://blog.16000000.xyz/css-study-note/</id>
     <published>2021-03-01T08:30:00.000Z</published>
-    <updated>2021-03-01T08:30:00.000Z</updated>
+    <updated>2022-05-18T18:12:22.000Z</updated>
     
     <content type="html"><![CDATA[<ol><li><p>关于<code>display:inline-block;</code> </p><ul><li>行内块，会导致有行间距，并且不在盒子模型上显示</li></ul></li><li><p><code>background: rgba(#fff, 0.1);</code></p></li><li><p>self-close tag  <code>&lt;img src=&quot;http://img.png&quot; /&gt;</code> </p><ul><li>这样一眼就可以看出这个标签已经结束了</li></ul></li><li><p><code>last-child</code>和<code>last-of-type</code>的区别</p><ul><li>使用div p:last-of-type，只会从p元素中找，会忽略其他类型元素，推荐此种方法</li><li>div p:last-child，这个选择器的生效条件其实是div最后一个子元素必须是p，但实际HTML结构中，总会各种类型元素夹杂穿插在一起</li></ul></li><li><p><code>I-C-E</code>特指度计算方法</p></li></ol>]]></content>
     
@@ -128,19 +128,19 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="CSS" scheme="http://blog.wrz8.com/tags/CSS/"/>
+    <category term="CSS" scheme="http://blog.16000000.xyz/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>怎么锻炼语言组织能力</title>
-    <link href="http://blog.wrz8.com/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/"/>
-    <id>http://blog.wrz8.com/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/</id>
+    <link href="http://blog.16000000.xyz/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/"/>
+    <id>http://blog.16000000.xyz/%E6%80%8E%E4%B9%88%E9%94%BB%E7%82%BC%E8%AF%AD%E8%A8%80%E7%BB%84%E7%BB%87%E8%83%BD%E5%8A%9B/</id>
     <published>2021-02-26T07:07:11.000Z</published>
-    <updated>2021-02-26T07:07:11.000Z</updated>
+    <updated>2022-05-18T18:13:25.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>语言组织能力是一种技能，技能是可教可学的。</p></blockquote><p>总结：</p><h3 id="1-吸收"><a href="#1-吸收" class="headerlink" title="1. 吸收"></a>1. 吸收</h3><ul><li>刻意练习</li><li>前人的智慧</li></ul><h3 id="2-沉淀"><a href="#2-沉淀" class="headerlink" title="2. 沉淀"></a>2. 沉淀</h3><ul><li>经历</li><li>阅历</li><li>记录</li></ul><h3 id="3-释放"><a href="#3-释放" class="headerlink" title="3. 释放"></a>3. 释放</h3><ul><li>分享</li><li>转述</li></ul><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul><li>自信</li><li>倾听能力</li><li>深入问题核心</li><li>主动出击</li><li>开口、动手</li></ul><p><a href="http://www.360doc.com/content/17/1027/19/44723970_698638055.shtml">点击阅读原文</a></p>]]></content>
     
@@ -156,19 +156,19 @@
     
     
     
-    <category term="学习笔记" scheme="http://blog.wrz8.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="http://blog.16000000.xyz/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="杂记" scheme="http://blog.wrz8.com/tags/%E6%9D%82%E8%AE%B0/"/>
+    <category term="杂记" scheme="http://blog.16000000.xyz/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>phpcms v9 segment.class.php|345 错误解决方法</title>
-    <link href="http://blog.wrz8.com/phpcms-v9-segment-class-php-345/"/>
-    <id>http://blog.wrz8.com/phpcms-v9-segment-class-php-345/</id>
+    <link href="http://blog.16000000.xyz/phpcms-v9-segment-class-php-345/"/>
+    <id>http://blog.16000000.xyz/phpcms-v9-segment-class-php-345/</id>
     <published>2021-02-04T01:48:23.000Z</published>
-    <updated>2021-02-04T01:48:23.000Z</updated>
+    <updated>2022-05-18T18:12:22.000Z</updated>
     
     <content type="html"><![CDATA[<p>这两天服务器环境升级了php到7.1.*，然后使用phpcms V9添加或编辑文章时都会遇到500错误。<br><br>查看error_log文件，看到一堆<code>Illegal string offset ‘**’ | phpcms/libs/classes/segment.class.php | 345</code>这样的错误。<br><br>查看 segment.class.php 文件的345行，附近的代码是：</p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  function get_keyword($str,$ilen=-1) &#123;</span><br><span class="line">    if($str==&#x27;&#x27;) return &#x27;&#x27;;</span><br><span class="line">    else $this-&gt;split_result($str,true,true);</span><br><span class="line">    $okstr = $this-&gt;result_string;</span><br><span class="line">    $ws = explode(&#x27; &#x27;,$okstr);</span><br><span class="line">    $okstr = $wks = &#x27;&#x27;;</span><br><span class="line">    foreach($ws as $w) &#123;</span><br><span class="line">      $w = trim($w);</span><br><span class="line">      if(strlen($w)&lt;2) continue;</span><br><span class="line">      if(!preg_match(&quot;/[^0-9:-]/&quot;,$w)) continue;</span><br><span class="line">  if(strlen($w)==2&amp;&amp;ord($w[0])&gt;0x80) continue;</span><br><span class="line"><span class="addition">+  if($wks==&#x27;&#x27;) $wks=array();</span></span><br><span class="line">  if(isset($wks[$w])) $wks[$w]++;</span><br><span class="line">      else $wks[$w] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br></pre></td></tr></table></figure><p>看来问题出在<code>$wks</code>这个变量上（字符串变量直接当数组使用）。查看前面的代码，<code>$wks</code>的赋值是：<code>$okstr = $wks = &#39;&#39;;</code> ，后来通过搜索得知：PHP7开始，对于数据类型的隐式转换做了调整，String无法隐式转换成Array了。</p><p>所以，问题就出在<code>$wks</code>一开始是字符串，后面的代码又直接把他当数组用，再新版PHP中就会出错。所以解决方法应该是在344行前面增加一行：<code>if($wks==&quot;&quot;) $wks=array()</code>;</p><p>经过测试，此方法有效。</p>]]></content>
     
@@ -180,19 +180,19 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="PHP" scheme="http://blog.wrz8.com/tags/PHP/"/>
+    <category term="PHP" scheme="http://blog.16000000.xyz/tags/PHP/"/>
     
   </entry>
   
   <entry>
     <title>DDIA-chapter-1-section-1</title>
-    <link href="http://blog.wrz8.com/DDIA-chapter-1-section-1/"/>
-    <id>http://blog.wrz8.com/DDIA-chapter-1-section-1/</id>
+    <link href="http://blog.16000000.xyz/DDIA-chapter-1-section-1/"/>
+    <id>http://blog.16000000.xyz/DDIA-chapter-1-section-1/</id>
     <published>2021-02-03T01:30:49.000Z</published>
-    <updated>2021-02-03T01:30:49.000Z</updated>
+    <updated>2022-05-18T18:13:25.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><ul><li><p>overwhelming</p></li><li><p>processor</p></li><li><p>batch</p></li><li><p>broker</p></li><li><p>buzzwords</p></li><li><p>Comprehensive</p></li><li><p>landscape</p></li><li><p>pros and cons</p></li><li><p>informed</p></li><li><p>fault tolerance</p></li><li><p>Trade-offs</p></li><li><p>distributed</p></li><li><p>distributed systems upon which modern databases are built</p></li><li><p>peek</p></li><li><p>entrench</p></li><li><p>undermine</p></li><li><p><em>protect vested interests</em> 保护既得的利益</p></li><li><p>avert disasters</p></li><li><p>Downtime</p></li><li><p>tease 梳理</p></li><li><p>from scratch</p></li><li><p>intuition 直觉</p></li><li><p>track down</p></li><li><p>hood 盖子</p></li><li><p>sensor</p></li><li><p>some kind of  某种</p></li><li><p>relevant 相关的, 有意义的</p></li><li><p>bonus 奖金, 额外的</p></li><li><p>robust</p></li><li><p>breaks down 分解, 故障</p></li><li><p>inflexible</p></li><li><p>premature optimization 过早的/未成熟的优化</p></li><li><p>publication</p></li><li><p>deployment n.部署, 调集</p></li><li><p>superficial</p></li><li><p>realm  领域</p></li><li><p>fall within 应列入…范围内</p></li><li><p>ambiguous</p></li><li><p>bias toward</p></li><li><p>Open platforms also reduce the risk of vendor lock-in.</p></li><li><p>proprietary</p></li><li><p>underpin</p></li><li><p>we compare several different data models and query languages</p></li><li><p>over time</p></li><li><p>the pacific ocean</p></li><li><p>as opposed 而不是</p></li><li><p>typically 通常</p></li><li><p>crunch 咬碎</p></li><li><p>painfully 非常(强调不好性质或者情形)</p></li><li><p>all the time 时时刻刻</p></li><li><p>approach 接近靠近, n. 方法手段</p></li><li><p>and so on 诸如此类, 等等.</p></li><li><pre><code>Message Integrity</code></pre></li><li><p>characteristics 特征/特点</p></li><li><p>We will explore what different tools have in common.</p></li><li><p>We’ll clarify what those things mean.</p></li><li><p>Reliable Delivery</p></li><li><p>emerge 出现</p></li><li><p>optimized 优化</p></li><li><p>The boundaries between the categories are becoming blurred.</p></li><li><p>stitch v. 缝补</p></li><li><p>demanding 强烈需求, 要求高的</p></li><li><p>essentially  基本上</p></li><li><p>composite 混合的</p></li><li><p>consistently 一贯地, 始终如一地</p></li><li><p>regulatory 管理的</p></li><li><p>regulatory constraints 监管限制</p></li><li><p>intuitive 直观的</p></li><li><p>data volume 数据量</p></li><li><p>load 承载</p></li><li><p>resilient</p></li><li><p>cope with</p></li><li><p>misleading 误导</p></li><li><p>entire 整个的</p></li><li><p>spec 规格</p></li><li><p>deviating 偏离</p></li><li><p>fault-tolerance mechanisms 机制</p></li><li><p>Counterintuitively 相反的</p></li><li><p>mean time to failure 平均故障时间</p></li><li><p>cluster</p></li><li><p>swappable</p></li><li><p>diesel generators</p></li><li><p>weak correlations</p></li><li><p>runaway</p></li><li><p>dormant</p></li><li><p>assumption 假设</p></li><li><p>isolation</p></li><li><p>discrepancy</p></li><li><p>constantly 始终；一直；重复不断地</p></li><li><p>known to be 众所周知的</p></li><li><p>outage  停电</p></li><li><p>Decouple</p></li><li><p>subset</p></li><li><p>metrics 韵律学/指标/量度</p></li><li><p><em>telemetry</em>  遥测</p></li><li><p>violate v. 违反</p></li><li><p>invaluable 极有用的</p></li><li><p>diagnose 诊断</p></li><li><p>nuclear power stations 核电站</p></li><li><p>mundane  世俗的</p></li><li><p>noncritical</p></li><li><p>order to 要求, 命令</p></li><li><p>succinctly 简洁的</p></li><li><p>two orders of magnitude 两个数量级</p></li><li><p>parameter 范围, 参数</p></li><li><p>anecdote 趣闻</p></li><li><p>robustly  坚固的, 强壮的</p></li><li><p>hybrid  混合的</p></li><li><p>celebrity 名人</p></li><li><p>separately 分别地 adv</p></li><li><p>revisit v.再次讨论, n.重访问</p></li><li><p>throughput</p></li><li><p>Latency  延迟</p></li><li><p>synonymously</p></li><li><p>latent  隐藏的</p></li><li><p>outliers  离群值</p></li><li><p>scenario</p></li><li><p>variation</p></li><li><p>retransmission</p></li><li><p>vibrations</p></li><li><p>garbage collection</p></li><li><p>metric</p></li><li><p>median</p></li><li><p>abbreviate</p></li><li><p>thresholds 阈值</p></li><li><p><em>tail latencies</em></p></li><li><p>known as 被称为</p></li><li><p>optimizing 优化</p></li><li><p>deem 认为</p></li><li><p>diminish 递减的</p></li><li><p><em>service level objectives</em> 服务水平目标 SLOs</p></li><li><p>service level agreements</p></li><li><p>phonics 自然拼读法</p></li></ul>]]></content>
     
@@ -209,21 +209,21 @@
     
     
     
-    <category term="读书" scheme="http://blog.wrz8.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+    <category term="读书" scheme="http://blog.16000000.xyz/categories/%E8%AF%BB%E4%B9%A6/"/>
     
     
-    <category term="DDIA" scheme="http://blog.wrz8.com/tags/DDIA/"/>
+    <category term="DDIA" scheme="http://blog.16000000.xyz/tags/DDIA/"/>
     
   </entry>
   
   <entry>
     <title>alembic 使用记录</title>
-    <link href="http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
-    <id>http://blog.wrz8.com/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</id>
+    <link href="http://blog.16000000.xyz/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>http://blog.16000000.xyz/alembic-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</id>
     <published>2021-01-31T14:45:54.000Z</published>
-    <updated>2021-02-01T02:56:54.000Z</updated>
+    <updated>2022-05-18T18:58:40.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p><code>pip install alembic</code></p><p>在项目根目录</p><p><code>alembic init alembic</code></p><h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h2><p>配合 <code>SQLAlchemy</code> 使用</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.db</span></span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> as_declarative, declared_attr</span><br><span class="line"></span><br><span class="line">SQLALCHEMY_DATABASE_URL = postgres://&lt;user&gt;:&lt;password&gt;@localhost/&lt;dbname&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">@as_declarative()</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseModel</span>:</span></span><br><span class="line">    <span class="built_in">id</span>: Any</span><br><span class="line">    __name__: <span class="built_in">str</span></span><br><span class="line"><span class="meta">    @declared_attr</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__tablename__</span>(<span class="params">cls</span>) -&gt; str:</span></span><br><span class="line">        <span class="keyword">return</span> cls.__name__.lower()</span><br></pre></td></tr></table></figure><p>修改 <code>env.py</code></p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># env.py</span><br><span class="line"><span class="addition">+ from app.db import BaseModel, SQLALCHEMY_DATABASE_URL  # noqa</span></span><br><span class="line"># SQLALCHEMY_DATABASE_URL 和 根目录下 `alembic.ini` 的 sqlalchemy.url 结构相同</span><br><span class="line"># 也可以直接修改 `alembic.ini` 的 sqlalchemy.url </span><br><span class="line"># 导入所有的模型</span><br><span class="line"><span class="addition">+ from app.modules import models # noqa</span></span><br><span class="line"><span class="addition">+ target_metadata = BaseModel.metadata</span></span><br><span class="line"></span><br><span class="line">def run_migrations_offline():</span><br><span class="line"><span class="deletion">-    # url = config.get_main_option(&quot;sqlalchemy.url&quot;)</span></span><br><span class="line"><span class="addition">+    url = SQLALCHEMY_DATABASE_URL</span></span><br><span class="line">    context.configure(</span><br><span class="line">        url=url,</span><br><span class="line">        target_metadata=target_metadata,</span><br><span class="line">        literal_binds=True,</span><br><span class="line">        compare_type=True,</span><br><span class="line">        dialect_opts=&#123;&quot;paramstyle&quot;: &quot;named&quot;&#125;,</span><br><span class="line">    )</span><br><span class="line">    with context.begin_transaction():</span><br><span class="line">        context.run_migrations()</span><br><span class="line"></span><br><span class="line">def run_migrations_online():</span><br><span class="line"><span class="addition">+    configuration = config.get_section(config.config_ini_section)</span></span><br><span class="line">    # 必须修改这个</span><br><span class="line"><span class="addition">+    configuration[&quot;sqlalchemy.url&quot;] = SQLALCHEMY_DATABASE_URL</span></span><br><span class="line"><span class="addition">+    connectable = engine_from_config(</span></span><br><span class="line"><span class="addition">+        configuration, prefix=&quot;sqlalchemy.&quot;, poolclass=pool.NullPool,</span></span><br><span class="line"><span class="addition">+    )</span></span><br><span class="line"></span><br><span class="line">    with connectable.connect() as connection:</span><br><span class="line">        context.configure(</span><br><span class="line">            connection=connection, target_metadata=target_metadata, compare_type=True</span><br><span class="line">        )</span><br><span class="line">        with context.begin_transaction():</span><br><span class="line">            context.run_migrations()</span><br></pre></td></tr></table></figure><h2 id="3-Migrate"><a href="#3-Migrate" class="headerlink" title="3. Migrate"></a>3. Migrate</h2><h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>提交的信息最好说明修改内容和日期: <code>210201 修改 user</code></p><p><code>alembic revision --autogenerate -m &quot;init commit&quot; </code></p><h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p><code>alembic upgrade head</code></p><h2 id="4-遇到的问题"><a href="#4-遇到的问题" class="headerlink" title="4. 遇到的问题"></a>4. 遇到的问题</h2><p>4.1 第二步卡住假死, 一般是因为数据库锁死</p><ul><li>可重新启动数据库, 然后重新执行 <code>alembic upgrade head</code></li></ul><p>4.2 想删除 <code>versions</code> 目录下的迁移文件, 重新开始.</p><ul><li>将数据库中 <code>alembic_version</code>表 删除</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p><code>pip install alembic</code></p><p>在项目根目录</p><p><code>alembic init alembic</code></p><h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h2><p>配合 <code>SQLAlchemy</code> 使用</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.db</span></span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> as_declarative, declared_attr</span><br><span class="line"></span><br><span class="line">SQLALCHEMY_DATABASE_URL = postgres://&lt;user&gt;:&lt;password&gt;@localhost/&lt;dbname&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">@as_declarative()</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseModel</span>:</span></span><br><span class="line">    <span class="built_in">id</span>: Any</span><br><span class="line">    __name__: <span class="built_in">str</span></span><br><span class="line"><span class="meta">    @declared_attr</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__tablename__</span>(<span class="params">cls</span>) -&gt; str:</span></span><br><span class="line">        <span class="keyword">return</span> cls.__name__.lower()</span><br></pre></td></tr></table></figure><p>修改 <code>env.py</code></p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># env.py</span><br><span class="line"><span class="addition">+ from app.db import BaseModel, SQLALCHEMY_DATABASE_URL  # noqa</span></span><br><span class="line"># SQLALCHEMY_DATABASE_URL 和 根目录下 `alembic.ini` 的 sqlalchemy.url 结构相同</span><br><span class="line"># 也可以直接修改 `alembic.ini` 的 sqlalchemy.url</span><br><span class="line"># 导入所有的模型</span><br><span class="line"><span class="addition">+ from app.modules import models # noqa</span></span><br><span class="line"><span class="addition">+ target_metadata = BaseModel.metadata</span></span><br><span class="line"></span><br><span class="line">def run_migrations_offline():</span><br><span class="line"><span class="deletion">-    # url = config.get_main_option(&quot;sqlalchemy.url&quot;)</span></span><br><span class="line"><span class="addition">+    url = SQLALCHEMY_DATABASE_URL</span></span><br><span class="line">    context.configure(</span><br><span class="line">        url=url,</span><br><span class="line">        target_metadata=target_metadata,</span><br><span class="line">        literal_binds=True,</span><br><span class="line">        compare_type=True,</span><br><span class="line">        dialect_opts=&#123;&quot;paramstyle&quot;: &quot;named&quot;&#125;,</span><br><span class="line">    )</span><br><span class="line">    with context.begin_transaction():</span><br><span class="line">        context.run_migrations()</span><br><span class="line"></span><br><span class="line">def run_migrations_online():</span><br><span class="line"><span class="addition">+    configuration = config.get_section(config.config_ini_section)</span></span><br><span class="line">    # 必须修改这个</span><br><span class="line"><span class="addition">+    configuration[&quot;sqlalchemy.url&quot;] = SQLALCHEMY_DATABASE_URL</span></span><br><span class="line"><span class="addition">+    connectable = engine_from_config(</span></span><br><span class="line"><span class="addition">+        configuration, prefix=&quot;sqlalchemy.&quot;, poolclass=pool.NullPool,</span></span><br><span class="line"><span class="addition">+    )</span></span><br><span class="line"></span><br><span class="line">    with connectable.connect() as connection:</span><br><span class="line">        context.configure(</span><br><span class="line">            connection=connection, target_metadata=target_metadata, compare_type=True</span><br><span class="line">        )</span><br><span class="line">        with context.begin_transaction():</span><br><span class="line">            context.run_migrations()</span><br></pre></td></tr></table></figure><h2 id="3-Migrate"><a href="#3-Migrate" class="headerlink" title="3. Migrate"></a>3. Migrate</h2><h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>提交的信息最好说明修改内容和日期: <code>210201 修改 user</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alembic revision --autogenerate -m <span class="string">&quot;init commit&quot;</span></span><br></pre></td></tr></table></figure><h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p><code>alembic upgrade head</code></p><h2 id="4-遇到的问题"><a href="#4-遇到的问题" class="headerlink" title="4. 遇到的问题"></a>4. 遇到的问题</h2><p>4.1 第二步卡住假死, 一般是因为数据库锁死</p><ul><li>可重新启动数据库, 然后重新执行 <code>alembic upgrade head</code></li></ul><p>4.2 想删除 <code>versions</code> 目录下的迁移文件, 重新开始.</p><ul><li>将数据库中 <code>alembic_version</code>表 删除</li></ul>]]></content>
     
     
       
@@ -235,25 +235,25 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Python" scheme="http://blog.wrz8.com/tags/Python/"/>
+    <category term="Python" scheme="http://blog.16000000.xyz/tags/Python/"/>
     
-    <category term="FastApi" scheme="http://blog.wrz8.com/tags/FastApi/"/>
+    <category term="FastApi" scheme="http://blog.16000000.xyz/tags/FastApi/"/>
     
-    <category term="alembic" scheme="http://blog.wrz8.com/tags/alembic/"/>
+    <category term="alembic" scheme="http://blog.16000000.xyz/tags/alembic/"/>
     
-    <category term="SQLAlchemy" scheme="http://blog.wrz8.com/tags/SQLAlchemy/"/>
+    <category term="SQLAlchemy" scheme="http://blog.16000000.xyz/tags/SQLAlchemy/"/>
     
   </entry>
   
   <entry>
     <title>question 2. add two numbers</title>
-    <link href="http://blog.wrz8.com/question-2-add-two-numbers-1/"/>
-    <id>http://blog.wrz8.com/question-2-add-two-numbers-1/</id>
+    <link href="http://blog.16000000.xyz/question-2-add-two-numbers-1/"/>
+    <id>http://blog.16000000.xyz/question-2-add-two-numbers-1/</id>
     <published>2021-01-27T11:29:19.000Z</published>
-    <updated>2021-01-27T11:29:19.000Z</updated>
+    <updated>2022-05-18T18:12:22.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h2 id="add-two-numbers"><a href="#add-two-numbers" class="headerlink" title="add two numbers"></a><a href="https://leetcode-cn.com/problems/add-two-numbers/">add two numbers</a></h2><p>给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。</p><p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p><p>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">例1:</span><br><span class="line">输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]</span><br><span class="line">输出：[7,0,8]</span><br><span class="line">解释：342 + 465 &#x3D; 807.</span><br><span class="line"></span><br><span class="line">例2:</span><br><span class="line">输入：l1 &#x3D; [0], l2 &#x3D; [0]</span><br><span class="line">输出：[0]</span><br><span class="line"></span><br><span class="line">例3:</span><br><span class="line">输入：l1 &#x3D; [9,9,9,9,9,9,9], l2 &#x3D; [9,9,9,9]</span><br><span class="line">输出：[8,9,9,9,0,0,0,1]</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由题知, 两个链表相加</p><ol><li>将链表的节点依次相加, 存到新的链表中</li><li>满十进一</li><li>根据例3可知, 位数不足补零</li></ol><p>所以需要中间变量存储需要进的值<br></p><h2 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h2><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span>(<span class="params">self, l1: ListNode, l2: ListNode</span>) -&gt; ListNode:</span></span><br><span class="line">        dummy = p = ListNode(<span class="literal">None</span>)</span><br><span class="line">        midNum = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> l1 <span class="keyword">or</span> l2 <span class="keyword">or</span> midNum:</span><br><span class="line">            midNum += (l1.val <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="number">0</span>) + (l2.val <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">            p.<span class="built_in">next</span> = ListNode(midNum % <span class="number">10</span>)</span><br><span class="line">            p = p.<span class="built_in">next</span></span><br><span class="line">            midNum //= <span class="number">10</span></span><br><span class="line">            l1 = l1.<span class="built_in">next</span> <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="literal">None</span> </span><br><span class="line">            l2 = l2.<span class="built_in">next</span> <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="literal">None</span> </span><br><span class="line">        <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -265,21 +265,21 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Python" scheme="http://blog.wrz8.com/tags/Python/"/>
+    <category term="Python" scheme="http://blog.16000000.xyz/tags/Python/"/>
     
-    <category term="Leetcode" scheme="http://blog.wrz8.com/tags/Leetcode/"/>
+    <category term="Leetcode" scheme="http://blog.16000000.xyz/tags/Leetcode/"/>
     
   </entry>
   
   <entry>
     <title>应用开发笔记</title>
-    <link href="http://blog.wrz8.com/Application-Development-Notes/"/>
-    <id>http://blog.wrz8.com/Application-Development-Notes/</id>
+    <link href="http://blog.16000000.xyz/Application-Development-Notes/"/>
+    <id>http://blog.16000000.xyz/Application-Development-Notes/</id>
     <published>2021-01-27T01:48:00.000Z</published>
-    <updated>2021-01-27T05:45:13.000Z</updated>
+    <updated>2022-05-18T18:13:25.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="应用开发"><a href="#应用开发" class="headerlink" title="应用开发"></a>应用开发</h3><ul><li>展示类的东西都应该有排序字段</li><li>支持筛选的字段一定是固定的</li><li>对于功能逻辑不了解<ul><li>先搭界面，再做功能分析，细化功能，完善界面，再进行开发</li></ul></li><li>对于自己的项目，先做逻辑功能分析，搭建初步页面，细化功能，完成开发</li><li>对于有交互的地方，在交互功能完成之后，一定要有一定的反馈</li></ul>]]></content>
     
@@ -294,19 +294,19 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Application Development" scheme="http://blog.wrz8.com/tags/Application-Development/"/>
+    <category term="Application Development" scheme="http://blog.16000000.xyz/tags/Application-Development/"/>
     
   </entry>
   
   <entry>
     <title>Warning: Prop &#39;href&#39; did not match</title>
-    <link href="http://blog.wrz8.com/Warning-Prop-href-did-not-match/"/>
-    <id>http://blog.wrz8.com/Warning-Prop-href-did-not-match/</id>
+    <link href="http://blog.16000000.xyz/Warning-Prop-href-did-not-match/"/>
+    <id>http://blog.16000000.xyz/Warning-Prop-href-did-not-match/</id>
     <published>2021-01-26T11:11:00.000Z</published>
-    <updated>2021-01-27T05:45:13.000Z</updated>
+    <updated>2022-05-18T18:13:25.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Warning-Prop-‘href’-did-not-match"><a href="#Warning-Prop-‘href’-did-not-match" class="headerlink" title="Warning: Prop ‘href’ did not match."></a>Warning: Prop ‘href’ did not match.</h3><h4 id="from"><a href="#from" class="headerlink" title="from"></a>from</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">&quot;link.html&quot;</span>&gt;&lt;/Link&gt;</span><br></pre></td></tr></table></figure><h4 id="to"><a href="#to" class="headerlink" title="to"></a>to</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">&quot;/link.html&quot;</span> <span class="keyword">as</span>=<span class="string">&quot;/link.html&quot;</span>&gt;&lt;/Link&gt;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -318,23 +318,23 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Nextjs" scheme="http://blog.wrz8.com/tags/Nextjs/"/>
+    <category term="Nextjs" scheme="http://blog.16000000.xyz/tags/Nextjs/"/>
     
-    <category term="React" scheme="http://blog.wrz8.com/tags/React/"/>
+    <category term="React" scheme="http://blog.16000000.xyz/tags/React/"/>
     
-    <category term="Bug" scheme="http://blog.wrz8.com/tags/Bug/"/>
+    <category term="Bug" scheme="http://blog.16000000.xyz/tags/Bug/"/>
     
   </entry>
   
   <entry>
     <title>Hexo Hello World</title>
-    <link href="http://blog.wrz8.com/hello-world/"/>
-    <id>http://blog.wrz8.com/hello-world/</id>
+    <link href="http://blog.16000000.xyz/hello-world/"/>
+    <id>http://blog.16000000.xyz/hello-world/</id>
     <published>2020-01-01T00:00:00.000Z</published>
-    <updated>2022-05-18T17:20:01.468Z</updated>
+    <updated>2022-05-18T19:02:37.657Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
@@ -347,16 +347,16 @@
     
     
     
-    <category term="Hexo" scheme="http://blog.wrz8.com/tags/Hexo/"/>
+    <category term="Hexo" scheme="http://blog.16000000.xyz/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>Python 踩坑</title>
-    <link href="http://blog.wrz8.com/python-bug-summary/"/>
-    <id>http://blog.wrz8.com/python-bug-summary/</id>
+    <link href="http://blog.16000000.xyz/python-bug-summary/"/>
+    <id>http://blog.16000000.xyz/python-bug-summary/</id>
     <published>2020-01-01T00:00:00.000Z</published>
-    <updated>2022-05-18T17:20:01.468Z</updated>
+    <updated>2022-05-18T19:02:37.657Z</updated>
     
     <content type="html"><![CDATA[<ol><li>变量赋值，不要在后面加逗号</li></ol><ul><li>会对其元组化</li></ul><ol start="2"><li>async await async</li><li>await async await</li></ol><h3 id="测试的重要性"><a href="#测试的重要性" class="headerlink" title="测试的重要性"></a>测试的重要性</h3><ul><li>只有写好测试，才能保证此错误不会被复现</li></ul>]]></content>
     
@@ -378,10 +378,10 @@
     
     
     
-    <category term="技术" scheme="http://blog.wrz8.com/categories/tech/"/>
+    <category term="技术" scheme="http://blog.16000000.xyz/categories/tech/"/>
     
     
-    <category term="Python" scheme="http://blog.wrz8.com/tags/Python/"/>
+    <category term="Python" scheme="http://blog.16000000.xyz/tags/Python/"/>
     
   </entry>
   
