@@ -8,7 +8,7 @@ tags:
   - systemd
   - Gunicorn
 date: 2021-04-16 08:46:48
-updated: 2021-04-16 08:46:48
+updated: 2022-05-19 02:13:25
 ---
 
 # 使用 Nginx Gunicorn systemd 启动 fastapi 项目

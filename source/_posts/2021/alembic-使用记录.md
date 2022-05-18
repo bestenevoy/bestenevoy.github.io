@@ -7,7 +7,7 @@ tags:
   - alembic
   - SQLAlchemy
 date: 2021-01-31 22:45:54
-updated: 2021-02-01 10:56:54
+updated: 2022-05-19 02:58:40
 ---
 
 ## 1. 安装
@@ -43,7 +43,7 @@ class BaseModel:
 # env.py
 + from app.db import BaseModel, SQLALCHEMY_DATABASE_URL  # noqa
 # SQLALCHEMY_DATABASE_URL 和 根目录下 `alembic.ini` 的 sqlalchemy.url 结构相同
-# 也可以直接修改 `alembic.ini` 的 sqlalchemy.url 
+# 也可以直接修改 `alembic.ini` 的 sqlalchemy.url
 # 导入所有的模型
 + from app.modules import models # noqa
 + target_metadata = BaseModel.metadata
@@ -83,7 +83,9 @@ def run_migrations_online():
 
 提交的信息最好说明修改内容和日期: `210201 修改 user`
 
-`alembic revision --autogenerate -m "init commit" `
+```sh
+alembic revision --autogenerate -m "init commit"
+```
 
 ### step2
 
@@ -92,7 +94,9 @@ def run_migrations_online():
 ## 4. 遇到的问题
 
 4.1 第二步卡住假死, 一般是因为数据库锁死
+
 - 可重新启动数据库, 然后重新执行 `alembic upgrade head`
 
 4.2 想删除 `versions` 目录下的迁移文件, 重新开始.
+
 - 将数据库中 `alembic_version`表 删除
