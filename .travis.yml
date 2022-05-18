@@ -16,4 +16,4 @@ deploy:
   on:
     branch: master
   local-dir: public
-  fqdn: blog.wrz8.com 
+  fqdn: blog.16000000.xyz
