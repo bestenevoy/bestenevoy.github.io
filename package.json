@@ -7,13 +7,13 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "update": "./scripts/updated.js"
+    "push": "./scripts/push.sh"
   },
   "hexo": {
-    "version": "5.3.0"
+    "version": "6.2.0"
   },
   "dependencies": {
-    "hexo": "^5.0.0",
+    "hexo": "^6.2.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^3.0.0",
