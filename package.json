@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "push": "./scripts/push.sh"
+    "push": "./push.sh"
   },
   "hexo": {
     "version": "6.2.0"
