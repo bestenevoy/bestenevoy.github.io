@@ -5,10 +5,10 @@
 # Site
 title: Rosen's Blog
 subtitle: '人生得意须尽欢，莫使金樽空对月。'
-description: '这里是 Rosen 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹水，偶尔也会写点正经文字。'
+description: '这里是 Rosen 的个人博客。'
 keywords: Blog, Life
 author: Rosen
-language: zh-Hans
+language: en
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -109,7 +109,8 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+# theme: landscape
+theme: cactus
 
 sitemap:
   path: sitemap.xml
@@ -130,7 +131,6 @@ theme_config:
   keywords: "Zeng, Rezen, Blog, 博客, 独立博客"
   favicon: /images/favicon.ico
   menu:
-    # Main: https://wrz8.com
     Github: https://github.com/bestenevoy
   copyright: Rezen
 # Deployment
