@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://blog.16000000.xyz
+url: http://blog.notelook.me
 root: /
 # permalink: :year/:month/:day/:title/
 permalink: :title/
@@ -127,12 +127,12 @@ stylus:
 
 theme_config:
   primary_color: "#f34e6c"
-  keywords: "wrz, rosen, blog, 博客, 独立博客"
+  keywords: "Zeng, Rezen, Blog, 博客, 独立博客"
   favicon: /images/favicon.ico
   menu:
     # Main: https://wrz8.com
     Github: https://github.com/bestenevoy
-  copyright: Rosen
+  copyright: Rezen
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
